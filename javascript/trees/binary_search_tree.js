@@ -24,6 +24,30 @@ function BinarySearchTree() {
     }
   };
 
+  var inOrderTraverseNode = function(node, callback) {
+    if (node) {
+      inOrderTraverseNode(node.left, callback);
+      callback(node.key);
+      inOrderTraverseNode(node.right, callback);
+    }
+  };
+
+  var preOrderTraverseNode = function(node, callback) {
+    if (node) {
+      callback(node.key);
+      preOrderTraverseNode(node.left, callback);
+      preOrderTraverseNode(node.right, callback);
+    }
+  };
+
+  var postOrderTraverseNode = function(node, callback) {
+    if (node) {
+      postOrderTraverseNode(node.left, callback);
+      postOrderTraverseNode(node.right, callback);
+      callback(node.key);
+    }
+  };
+
   this.insert = function(key) {
     if (!root) {
       root = new Node(key);
@@ -40,14 +64,18 @@ function BinarySearchTree() {
     
   };
 
-  this.inOrderTraverse = function() {
-    
+  this.inOrderTraverse = function(callback) {
+    inOrderTraverseNode(root, callback);
   };
 
   this.preOrderTraverse = function() {
-    
+    preOrderTraverseNode(root, callback);
   };
 
+  this.postOrderTraverse = function() {
+    postOrderTraverseNode(root, callback);
+  };
+  
   this.min = function() {
     
   };
