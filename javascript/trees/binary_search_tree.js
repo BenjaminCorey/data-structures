@@ -77,10 +77,16 @@ function BinarySearchTree() {
   };
   
   this.min = function() {
-    
+    while (node && node.left) {
+      node = node.left;
+    }
+    return node.key;
   };
 
   this.max = function() {
-    
+    while (node && node.right) {
+      node = node.right;
+    }
+    return node.key;
   };
 }
